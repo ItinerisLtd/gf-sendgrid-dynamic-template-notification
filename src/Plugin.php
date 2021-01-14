@@ -8,7 +8,7 @@ use GFForms;
 
 class Plugin
 {
-    public const VERSION = '0.0.1';
+    public const VERSION = '0.1.0';
     public const SLUG = 'gf-sendgrid-dynamic-template-notification';
 
     public static function run(): void

@@ -2,6 +2,15 @@
     "name": "itinerisltd/gf-sendgrid-dynamic-template-notification",
     "type": "wordpress-plugin",
     "description": "Send GravityForms notifications via SendGrid dynamic transactional templates.",
+    "keywords": [
+        "dynamic-template",
+        "email",
+        "gravity-forms",
+        "gravityforms",
+        "sendgrid",
+        "wordpress",
+        "wp"
+    ],
     "homepage": "https://github.com/itinerisltd/gf-sendgrid-dynamic-template-notification",
     "license": "MIT",
     "authors": [
@@ -30,7 +39,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.0.x-dev"
+            "dev-master": "0.1.x-dev"
         }
     },
     "autoload": {
