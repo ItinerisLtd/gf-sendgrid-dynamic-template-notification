@@ -1,0 +1,59 @@
+{
+    "name": "itinerisltd/gf-sendgrid-dynamic-template-notification",
+    "type": "wordpress-plugin",
+    "description": "Send GravityForms notifications via SendGrid dynamic transactional templates.",
+    "homepage": "https://github.com/itinerisltd/gf-sendgrid-dynamic-template-notification",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Itineris Limited",
+            "email": "dev@itineris.co.uk",
+            "homepage": "https://itineris.co.uk/",
+            "role": "Company"
+        },
+        {
+            "name": "Tang Rufus",
+            "email": "tangrufus@gmail.com",
+            "homepage": "https://typist.tech/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Itineris\\GFSendGridDynamicTemplateNotification\\": "src/"
+        }
+    },
+    "archive": {
+        "exclude": [
+            "*",
+            "!*LICENSE*",
+            "!*.php",
+            "!/README.txt",
+            "!src",
+            "test",
+            "tests"
+        ]
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "support": {
+        "email": "dev@itineris.co.uk",
+        "issues": "https://github.com/ItinerisLtd/gf-sendgrid-dynamic-template-notification/issues",
+        "source": "https://github.com/ItinerisLtd/gf-sendgrid-dynamic-template-notification"
+    }
+}
