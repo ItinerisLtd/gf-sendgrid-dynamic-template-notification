@@ -25,6 +25,12 @@ class AddOn extends GFAddOn
     protected $_title = 'GravityForms SendGrid Dynamic Template Notification';
     protected $_short_title = 'GF SendGrid Dynamic Template Notification';
 
+    public function __construct()
+    {
+        $this->_full_path = realpath(__DIR__ . '/../gf-sendgrid-dynamic-template-notification.php');
+        parent::__construct();
+    }
+
     /**
      * Returns an instance of this class, and stores it in the $_instance property.
      *
