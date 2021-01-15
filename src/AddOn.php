@@ -14,7 +14,7 @@ use GFAddOn;
 class AddOn extends GFAddOn
 {
     /**
-     * @var object|null $_instance If available, contains an instance of this class.
+     * @var ?self $_instance If available, contains an instance of this class.
      */
     private static $_instance = null;
     protected $_version = Plugin::VERSION;
@@ -28,7 +28,7 @@ class AddOn extends GFAddOn
     /**
      * Returns an instance of this class, and stores it in the $_instance property.
      *
-     * @return object $_instance An instance of this class.
+     * @return ?self $_instance An instance of this class.
      */
     public static function get_instance(): self
     {
