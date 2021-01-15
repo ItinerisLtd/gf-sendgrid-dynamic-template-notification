@@ -14,7 +14,7 @@ class NotificationService
 
         $services[Plugin::SLUG] = [
             'label' => __('SendGrid Dynamic Template', 'gf-sendgrid-dynamic-template-notification'),
-            'image' => $addOn->get_base_url() . '/../images/icon.svg',
+            'image' => $addOn->get_base_url() . '/images/icon.svg',
             'disabled' => ! SendGrid::isSavedApiKeyValid(),
             'disabled_message' => sprintf(
                 esc_html__(
