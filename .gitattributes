@@ -5,6 +5,7 @@
 /* export-ignore
 
 # Export white-listed production code only.
+/images         -export-ignore
 /src            -export-ignore
 /*.php          -export-ignore
 /composer.*     -export-ignore
