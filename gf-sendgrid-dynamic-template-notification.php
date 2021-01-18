@@ -4,7 +4,7 @@
  * Plugin Name:       GravityForms SendGrid Dynamic Template Notification
  * Plugin URI:        https://github.com/itinerisltd/gf-sendgrid-dynamic-template-notification
  * Description:       Send GravityForms notifications via SendGrid dynamic transactional templates.
- * Version:           0.1.1
+ * Version:           0.1.2
  * Requires at least: 5.6
  * Requires PHP:      7.4
  * Author:            Itineris Limited
