@@ -90,11 +90,14 @@ class NotificationService
     public static function sendEmail(array $email, array $notification, array $entry): bool
     {
         $dynamicTemplateData = NotificationSettings::getDynamicTemplateData($entry, $notification);
+        $genericTemplateData = NotificationSettings::getGenericTemplateData($entry, $notification);
+        $combinedTemplateData = array_merge($dynamicTemplateData, $genericTemplateData);
 
         // Get form object.
         $form = GFAPI::get_form($entry['form_id']);
 
         $fromEmail = '';
+
         // Get from email address from email header.
         preg_match('/<(.*)>/', $email['headers']['From'], $fromEmail);
 
@@ -115,7 +118,7 @@ class NotificationService
             ],
             'personalizations' => [
                 [
-                    'dynamic_template_data' => $dynamicTemplateData,
+                    'dynamic_template_data' => $combinedTemplateData,
                 ],
             ],
         ];
