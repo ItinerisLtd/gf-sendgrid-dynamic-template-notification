@@ -7,6 +7,7 @@ class NotificationSettings
 {
     protected const TEMPLATE_ID_KEY = 'templateId';
     protected const DYNAMIC_TEMPLATE_KEY = 'dynamicTemplateData';
+    protected const GENERIC_TEMPLATE_KEY = 'genericTemplateData';
 
     public static function register(array $settings, $notification): array
     {
@@ -52,6 +53,12 @@ class NotificationSettings
                     'label' => esc_html__('Dynamic Template Data', 'gf-sendgrid-dynamic-template-notification'),
                     'exclude_field_types' => 'creditcard',
                 ],
+                [
+                    'type' => 'generic_map',
+                    'name' => static::GENERIC_TEMPLATE_KEY,
+                    'label' => esc_html__('Custom Template Data', 'gf-sendgrid-dynamic-template-notification'),
+                    'exclude_field_types' => 'creditcard',
+                ],
             ],
         ];
 
@@ -62,6 +69,7 @@ class NotificationSettings
     {
         $notification[static::TEMPLATE_ID_KEY] = rgpost('_gform_setting_' . static::TEMPLATE_ID_KEY);
         $notification[static::DYNAMIC_TEMPLATE_KEY] = json_decode(rgpost('_gform_setting_' . static::DYNAMIC_TEMPLATE_KEY)) ?: [];
+        $notification[static::GENERIC_TEMPLATE_KEY] = json_decode(rgpost('_gform_setting_' . static::GENERIC_TEMPLATE_KEY)) ?: [];
 
         return $notification;
     }
@@ -74,6 +82,11 @@ class NotificationSettings
     public static function getDynamicTemplateData(array $entry, array $notification): array
     {
         return static::getDynamicFieldMapValues($entry, $notification, static::DYNAMIC_TEMPLATE_KEY);
+    }
+
+    public static function getGenericTemplateData(array $entry, array $notification): array
+    {
+        return static::getGenericFieldMapValues($entry, $notification, static::GENERIC_TEMPLATE_KEY);
     }
 
     /**
@@ -95,6 +108,20 @@ class NotificationSettings
         }
 
         return array_filter($values);
+    }
+
+    /**
+     * Get mapped key/value pairs for generic field map.
+     *
+     * @param array  $entry        Entry object.
+     * @param array  $notification Notification object.
+     * @param string $key          Generic field map field name.
+     *
+     * @return array
+     */
+    protected static function getGenericFieldMapValues(array $entry, array $notification, string $key): array
+    {
+        return array_filter(static::getDynamicFieldMapFields($notification, $key));
     }
 
     /**
@@ -120,7 +147,7 @@ class NotificationSettings
                 // Get mapped key or replace with custom value.
                 $field_key = 'gf_custom' === $dynamic_field['key'] ? $dynamic_field['custom_key'] : $dynamic_field['key'];
                 // Add mapped field to return array.
-                $fields[$field_key] = $dynamic_field['value'];
+                $fields[$field_key] = 'gf_custom' === $dynamic_field['value'] ? $dynamic_field['custom_value'] : $dynamic_field['value'];
             }
         }
 
